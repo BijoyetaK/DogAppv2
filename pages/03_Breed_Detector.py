@@ -43,6 +43,11 @@ def getValueIcon(icon_type,icon_level_val,icon_category_text):
         icon_emoji = ':boom::collision: '
     elif icon_type == 'Trainability':
         icon_emoji = ':eight_pointed_black_star: '
+    elif icon_type == 'Grooming':
+        icon_emoji = ':scissors: '
+    elif icon_type == 'Shedding':
+        icon_emoji = ':sheep: '
+
 
     if icon_level_val > 0.0 and icon_level_val <= 0.25:
         icon = icon_emoji + icon_category_text
@@ -205,6 +210,18 @@ if upl is not None:
                 trainability_category = akc.get('trainability_category')
                 demeanor_value = akc.get('demeanor_value')
                 demeanor_category = akc.get('demeanor_category')
+                max_height = akc.get("max_height")
+                max_weight = akc.get("max_weight")
+                min_height = akc.get("min_height")
+                min_weight = akc.get("min_weight")
+                height_display = "No height Info"
+                weight_display = "No weight Info"
+                #for display of height and weight
+                if min_height and max_height:
+                    height_display = "###### Height: " + str(min_height) + " - " + str(max_height)
+                if min_weight and max_weight:
+                    weight_display = "###### Weight: " + str(min_weight) + " - " + str(max_weight) + " lbs"
+
 
                 #detected breed details
                 df_predicted_breed = df_akc_output[comparison_cols]
@@ -225,25 +242,32 @@ if upl is not None:
                         energyIcon = getValueIcon( icon_type='Energy Level',icon_level_val=energy_level_value,icon_category_text=energy_level_category)
                         st.markdown(energyIcon)
 
+                    if demeanor_value:
+                        demeanorIcon = getValueIcon(icon_type='Demeanor', icon_level_val=demeanor_value,
+                                                    icon_category_text=demeanor_category)
+                        st.markdown(demeanorIcon)
+
                     if trainability_value:
                         trainIcon = getValueIcon(icon_type='Trainability', icon_level_val=trainability_value,
                                                   icon_category_text=trainability_category)
                         st.markdown(trainIcon)
 
-                    if demeanor_value:
-                        demeanorIcon = getValueIcon(icon_type='Demeanor', icon_level_val=demeanor_value,
-                                                 icon_category_text=demeanor_category)
-                        st.markdown(demeanorIcon)
 
                 with cv2:
 
                     if grooming_frequency_value:
-
-                        st.markdown('**Grooming:** ' + grooming_frequency_category)
+                        groomIcon = getValueIcon(icon_type='Grooming', icon_level_val=grooming_frequency_value,
+                                                 icon_category_text=grooming_frequency_category)
+                        st.markdown(groomIcon)
 
                     if shedding_value:
+                        shedIcon = getValueIcon(icon_type='Shedding', icon_level_val=shedding_value,
+                                                icon_category_text=shedding_category)
+                        st.markdown(shedIcon)
 
-                        st.markdown('**Shedding:** ' + shedding_category)
+                    st.markdown(height_display)
+                    st.markdown(weight_display)
+
 
             else:
                 st.subheader("Predicted Breed: " + predicted_species_name)

@@ -42,6 +42,11 @@ def getValueIcon(icon_type,icon_level_val,icon_category_text):
         icon_emoji = ':boom::collision: '
     elif icon_type == 'Trainability':
         icon_emoji = ':eight_pointed_black_star: '
+    elif icon_type == 'Grooming':
+        icon_emoji = ':scissors: '
+    elif icon_type == 'Shedding':
+        icon_emoji = ':sheep: '
+
 
     if icon_level_val > 0.0 and icon_level_val <= 0.25:
         icon = icon_emoji + icon_category_text
@@ -84,7 +89,7 @@ def main():
     fig = px.line_polar(
         r=group_row[1:],
         theta=group_row.index[1:],
-        title=f" {group_selection} Metrics",
+        #title=f" {group_selection} Metrics",
         line_close=True,
         color_discrete_sequence=['blue'],
         line_dash_sequence=['solid'],
@@ -96,7 +101,7 @@ def main():
         px.line_polar(
             r=breed_selection[2:],
             theta=breed_selection.index[2:],
-            title=f" {selected_breed} Metrics",
+            #title=f" {selected_breed} Metrics",
             line_close=True,
             color_discrete_sequence=['red'],
             line_dash_sequence=['solid'],
@@ -130,9 +135,9 @@ def main():
     ]
 
     # pushing labels
-    fig.update_layout(annotations=annotations,width=900,height=400)
+    fig.update_layout(annotations=annotations,width=500,height=400)
 
-    co1,co2 = st.columns([1,3])
+    co1,co2 = st.columns([1,2])
 
     with co1:
 
@@ -159,7 +164,7 @@ def main():
             demeanor_category = akc.get('demeanor_category')
             species_image = akc.get('Img_Link')
 
-            st.image(species_image,width=500)
+            st.image(species_image,use_column_width=True)
 
             if temperament:
                 st.markdown( "#### " + temperament)
@@ -169,30 +174,45 @@ def main():
                                           icon_category_text=energy_level_category)
                 st.markdown(energyIcon)
 
-            if trainability_value:
-                trainIcon = getValueIcon(icon_type='Trainability', icon_level_val=trainability_value,
-                                         icon_category_text=trainability_category)
-                st.markdown(trainIcon)
-
             if demeanor_value:
                 demeanorIcon = getValueIcon(icon_type='Demeanor', icon_level_val=demeanor_value,
                                             icon_category_text=demeanor_category)
                 st.markdown(demeanorIcon)
 
+            if trainability_value:
+                trainIcon = getValueIcon(icon_type='Trainability', icon_level_val=trainability_value,
+                                         icon_category_text=trainability_category)
+                st.markdown(trainIcon)
 
-            st.slider(label="##### Average Height :dog: ", min_value=0.0, max_value=1.0, value=average_height,
-                      disabled=True)
-            st.slider(label="##### Average Weight :rock: ", min_value=0.0, max_value=1.0, value=average_weight,
-                      disabled=True)
+            if grooming_frequency_value:
+                groomIcon = getValueIcon(icon_type='Grooming', icon_level_val=grooming_frequency_value,
+                                         icon_category_text=grooming_frequency_category)
+                st.markdown(groomIcon)
 
-
-            st.slider(label="##### Average Lifespan :heavy_heart_exclamation_mark_ornament: ",min_value=0.0,max_value=1.0,value=average_lifespan,disabled=True)
+            if shedding_value:
+                shedIcon = getValueIcon(icon_type='Shedding', icon_level_val=shedding_value,
+                                         icon_category_text=shedding_category)
+                st.markdown(shedIcon)
 
 
 
     with co2:
         # print
+        st.subheader("Breed vs Group Average")
+        st.markdown("##### " + selected_breed + " | " + group_selection)
+
         st.plotly_chart(fig)
+
+        st.slider(label="##### Average Height :dog: ", min_value=0.0, max_value=1.0, value=average_height,
+                  disabled=True)
+        st.slider(label="##### Average Weight :rock: ", min_value=0.0, max_value=1.0, value=average_weight,
+                  disabled=True)
+
+        st.slider(label="##### Average Lifespan :heavy_heart_exclamation_mark_ornament: ", min_value=0.0,
+                  max_value=1.0,
+                  value=average_lifespan, disabled=True)
+
+
 
 
 #if __name__ == "__main__":
