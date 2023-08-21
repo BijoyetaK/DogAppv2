@@ -9,7 +9,9 @@ import sqlite3
 import json
 
 
-
+st.set_page_config(layout="wide")
+st.markdown('# Explore Dog Breeds 🔍')
+st.sidebar.markdown('# Explore Dog Breeds 🔍')
 
 root_directory = os.getcwd()
 db_folder = 'db'
@@ -22,8 +24,6 @@ sqliteConn = sqlite3.connect(db_path)
 # imports
 scaled_df = pd.read_csv("Data/output/scaled_df.csv")
 grouped_scaled_df = pd.read_csv("Data/output/grouped_scaled_df.csv")
-
-st.set_page_config(layout="wide")
 
 #for database connection : fetching AKC data for the selected breed
 def get_species_info(species_name):
@@ -63,7 +63,7 @@ def getValueIcon(icon_type,icon_level_val,icon_category_text):
 # page setup
 def main():
     #title
-    st.title("Explore by Breed")
+    #st.title("Explore by Breed")
 
     # drop-down
     selected_breed = st.selectbox("Select a Breed", scaled_df["Breed"])

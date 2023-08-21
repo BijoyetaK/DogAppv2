@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import plotly_express as px
+import plotly.express as px
 import plotly.figure_factory as ff
 import os
 import json
@@ -8,6 +8,8 @@ import numpy as np
 import loadconfig
 
 st.set_page_config(layout="wide")
+st.header("Model Summary📓")
+st.sidebar.header("Model Summary📓")
 
 appconfig = loadconfig.Appconfig()
 
@@ -19,7 +21,6 @@ other_model_evaluation_file = appconfig.other_evaluation_file
 #prediction_evaluation_file = "Data/output/Validation_result_all_v_1691869977.json"
 
 
-st.header("Model Summary")
 
 #reading training history json for plotting loss and accuracy
 #reading the model evaluation details to get the model name to create the validation result file
