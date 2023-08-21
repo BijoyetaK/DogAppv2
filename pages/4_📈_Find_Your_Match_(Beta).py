@@ -116,11 +116,11 @@ def user_input_features_group():
         st.slider('Minimum Weight, Maximum', 0.0, 79.0, (3.0,30.0),key="weight_group")
         st.slider('Minimum, Maximum expectancy', 0.0, 16.0, (3.0,12.0),key="expectancy_group")
         st.slider('How popular your would like your friend to be', 0, 148, 75,key="popularity_group")
-        st.slider('grooming_frequency_value', 0.0,1.0,0.0,step=0.20,key="grooming_group")
-        st.slider('shedding_value',0.0,1.0,0.0,step=0.20,key="shedding_group")
-        st.slider('energy_level_value', 0.0,1.0, 0.0,step=0.20,key="energy_group")
-        st.slider('trainability_value', 0.0,1.0,0.0,step=0.20,key="trainability_group")
-        st.slider('demeanor_value',  0.0,1.0,0.0,step=0.20,key="demeanor_group")
+        st.slider('grooming_frequency_value', 0.0,1.0,0.2,step=0.20,key="grooming_group")
+        st.slider('shedding_value',0.0,1.0,0.2,step=0.20,key="shedding_group")
+        st.slider('energy_level_value', 0.0,1.0, 0.6,step=0.20,key="energy_group")
+        st.slider('trainability_value', 0.0,1.0,0.4,step=0.20,key="trainability_group")
+        st.slider('demeanor_value',  0.0,1.0,0.2,step=0.20,key="demeanor_group")
         user_input_group = get_group_features()
 
         # for group prediction based on inputs
@@ -138,7 +138,7 @@ def user_input_features_group():
         st.markdown("                                       ")
         # display results
         st.markdown(
-            "**Open Colab Notebook [Predict Group](https://google.com)**")
+            "**Open Colab Notebook [Predict Group](https://colab.research.google.com/drive/1u3M6Fi-xdaPNQYjz4hyJDxhOD4sHNTts)**")
 
 
     with t2:
@@ -148,11 +148,11 @@ def user_input_features_group():
         st.slider('Minimum Weight, Maximum', 0.0, 79.0, (3.0, 30.0), key="weight_breed")
         st.slider('Minimum, Maximum expectancy', 0.0, 16.0, (3.0, 12.0), key="expectancy_breed")
         st.slider('How popular your would like your friend to be', 0, 148, 75, key="popularity_breed")
-        st.slider('grooming_frequency_value', 0.0, 1.0, 0.0, step=0.20, key="grooming_breed")
-        st.slider('shedding_value', 0.0, 1.0, 0.0, step=0.20, key="shedding_breed")
-        st.slider('energy_level_value', 0.0, 1.0, 0.0, step=0.20, key="energy_breed")
-        st.slider('trainability_value', 0.0, 1.0, 0.0, step=0.20, key="trainability_breed")
-        st.slider('demeanor_value', 0.0, 1.0, 0.0, step=0.20, key="demeanor_breed")
+        st.slider('grooming_frequency_value', 0.0, 1.0, 0.2, step=0.20, key="grooming_breed")
+        st.slider('shedding_value', 0.0, 1.0, 0.2, step=0.20, key="shedding_breed")
+        st.slider('energy_level_value', 0.0, 1.0, 0.6, step=0.20, key="energy_breed")
+        st.slider('trainability_value', 0.0, 1.0, 0.4, step=0.20, key="trainability_breed")
+        st.slider('demeanor_value', 0.0, 1.0, 0.2, step=0.20, key="demeanor_breed")
 
         # for breed prediction based on group
         groups_kwag = ['Sporting', 'Hound', 'Working', 'Terrier', 'Toy', 'Non-Sporting', 'Herding']
@@ -176,7 +176,7 @@ def user_input_features_group():
         st.markdown("                                       ")
         # display results
         st.markdown(
-            "**Open Colab Notebook [Predict Breed](https://google.com)**")
+            "**Open Colab Notebook [Predict Breed](https://colab.research.google.com/drive/1ADi6US2i3o-M-hhf8JaibRzlJRzuYsNI?usp=sharing)**")
 
 
 # ***************************************************************************************************************
