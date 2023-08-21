@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import sqlite3 as sqlite
 
+# Homepage
 st.set_page_config(page_title='Pawfect Match 🐶')
 st.title('Pawfect Match 🐶')
 st.sidebar.success('Select Any Page from here')
