@@ -16,6 +16,7 @@ appconfig = loadconfig.Appconfig()
 #evaluation_file = "Data/output/outputModel_evaluation_1691869977.json"
 evaluation_file = appconfig.evalulation_file
 other_model_evaluation_file = appconfig.other_evaluation_file
+workflow_image_file = 'image/Image_Model_Workflow.png'
 #file_path = os.getcwd() + '/' + evaluation_file
 
 #prediction_evaluation_file = "Data/output/Validation_result_all_v_1691869977.json"
@@ -90,7 +91,7 @@ if len(df) > 0:
     df_other_result_counts.rename(columns={"Image_url": "Image_count"}, inplace=True)
 
 
-    t1,t2,t3,t4 = st.tabs(["**Prediction Outcome Chart**","**Prediction misses**","**Accuracy and Loss**","**Data**"])
+    t1,t2,t3,t4,t5 = st.tabs(["**Prediction Outcome Chart**","**Prediction misses**","**Accuracy and Loss**","**Data**","**Image Model workflow**"])
 
     with t1:
         ct1,ct2 = st.columns([1,1])
@@ -167,3 +168,8 @@ if len(df) > 0:
             st.markdown("**" + other_model_name + "**" + " | " + other_optimizer + " optimizer | learning rate " + str(
                 other_learning_rate))
             st.dataframe(df_other_result_counts)
+
+    with t5:
+
+        st.image(workflow_image_file,width=1200)
+
