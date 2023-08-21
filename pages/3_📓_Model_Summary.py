@@ -16,7 +16,7 @@ appconfig = loadconfig.Appconfig()
 #evaluation_file = "Data/output/outputModel_evaluation_1691869977.json"
 evaluation_file = appconfig.evalulation_file
 other_model_evaluation_file = appconfig.other_evaluation_file
-workflow_image_file = 'image/Image_Model_Workflow.png'
+workflow_image_file = 'image/Workflow.png'
 #file_path = os.getcwd() + '/' + evaluation_file
 
 #prediction_evaluation_file = "Data/output/Validation_result_all_v_1691869977.json"
