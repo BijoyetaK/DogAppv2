@@ -30,7 +30,8 @@ import pickle
 st.image('image/user_questionaire_app_image2.jpg')
 
 # Headers on page
-st.sidebar.header('Find Your Match by Group 📈')
+st.sidebar.header('Find Your Match: Breed Group 📈')
+st.sidebar.header('Find Your Match: Breed 🐕')
 st.subheader("Dog Breed and Group Match Prediction App")
 st.markdown("##### This app predicts the pawfect Dog Match for you! :dog: ")
 
