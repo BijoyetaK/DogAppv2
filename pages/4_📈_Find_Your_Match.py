@@ -122,6 +122,7 @@ def group_prediction(user_input_df):
     # load the model from disk
     # filename = 'dog_app_rf_group_pred.sav'
     # loaded_model_rf = pickle.load(open(model_rf_group_filename, 'rb'))
+    print(os.listdir('models'))
     with open(model_rf_group_filename, 'rb') as file:
         loaded_model_rf = pickle.load(file)
 
